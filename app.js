@@ -40,7 +40,7 @@ async function main() {
     age: 37
   });
 
-  await person.save();
+  // await person.save();
 
   // const kiwi = new Fruit ({
   //   name: "Kiwi",
@@ -97,4 +97,13 @@ async function main() {
   //     console.log("The element has been deleted successfully");
   //   }
   // });
+
+  Person.deleteMany({name: "John"}, function(err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("All elements were deleted due to specified conditions.");
+    }
+  });
+
 }
