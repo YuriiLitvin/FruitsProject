@@ -30,15 +30,26 @@ async function main() {
 
   const personSchema = new mongoose.Schema({
     name: String,
-    age: Number
+    age: Number,
+    favouriteFruit: fruitSchema
   });
 
   const Person = mongoose.model("Person", personSchema);
 
-  const person = new Person ({
-    name: "John",
-    age: 37
+
+  const becon = new Fruit ({
+    name: "Becon",
+    rating: 10,
+    review: "Better than any fruit."
   });
+
+  await becon.save();
+
+  // const person = new Person ({
+  //   name: "Amy",
+  //   age: 12,
+  //   favouriteFruit: pineapple
+  // });
 
   // await person.save();
 
@@ -59,7 +70,6 @@ async function main() {
   //   rating: 12,
   //   review: "Best fruit ever for minions"
   // });
-
 
 
   // Fruit.insertMany([kiwi, orange, banana],function(err) {
@@ -90,6 +100,14 @@ async function main() {
   //   }
   // });
 
+  Person.updateOne({name: "John"}, {favouriteFruit: becon}, function(err) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Now John has its own best fruit!");
+    }
+  });
+
   // Fruit.deleteOne({name: "Peachie"}, function(err) {
   //   if (err) {
   //     console.log(err, "There is no specified element");
@@ -98,12 +116,20 @@ async function main() {
   //   }
   // });
 
-  Person.deleteMany({name: "John"}, function(err) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("All elements were deleted due to specified conditions.");
-    }
-  });
+  // Person.deleteMany({name: "John"}, function(err) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log("All elements were deleted due to specified conditions.");
+  //   }
+  // });
+
+  // Fruit.deleteMany({name: "Becon"}, function(err) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log("All elements were deleted due to specified conditions.");
+  //   }
+  // });
 
 }
