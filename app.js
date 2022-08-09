@@ -40,7 +40,7 @@ async function main() {
     age: 37
   });
 
-  // await person.save();
+  await person.save();
 
   // const kiwi = new Fruit ({
   //   name: "Kiwi",
@@ -82,11 +82,19 @@ async function main() {
     }
   });
 
-  Fruit.updateOne({_id: "62f289932e6f24787a234447"}, {name: "Peachie"}, function(err) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("Successfully updated the document");
-    }
-  })
+  // Fruit.updateOne({_id: "62f289932e6f24787a234447"}, {name: "Peachie"}, function(err) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log("Successfully updated the document");
+  //   }
+  // });
+
+  // Fruit.deleteOne({name: "Peachie"}, function(err) {
+  //   if (err) {
+  //     console.log(err, "There is no specified element");
+  //   } else {
+  //     console.log("The element has been deleted successfully");
+  //   }
+  // });
 }
